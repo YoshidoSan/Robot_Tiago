@@ -1,0 +1,10 @@
+<package>
+<name>stero_mobile_init</name>
+<version>1.2.4</version>
+<description>uzupelnic</description>
+<maintainer email="kacper.marchlewicz.stud@edu.pw"> DO-UZUPELNIENIA!!!! </maintainer>
+<license>BSD</license>
+  <buildtool_depend>catkin</buildtool_depend>
+  <run_depend>velma_common</run_depend>
+
+</package>

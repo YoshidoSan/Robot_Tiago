@@ -1,0 +1,56 @@
+<launch>
+
+	<arg name="world_name" default="$(find stero_mobile_init)/worlds/stero_mobile.world" />	
+	<arg name="mobile_base" default="true" />
+	<arg name="use_gpu_ray" default="true" />
+
+	<param name="/sim_mode" type="string" value="gazebo" />
+
+  <arg name="GAZEBO_MODEL_PATH" default=""/>
+  <arg name="GAZEBO_RESOURCE_PATH" default=""/>
+  <!-- start gazebo server-->
+
+	<!-- manipulative part of the system -->
+
+	<!-- launch omnivelma simulation -->
+	<include file="$(find velma_common)/launch/velma_system.launch">
+		<arg name="world_name" value="$(arg world_name)" />
+		<arg name="mobile_base" value="$(arg mobile_base)" />
+		<arg name="use_gpu_ray" value="$(arg use_gpu_ray)" />
+	</include>
+
+	<!-- octomap server -->
+	<include file="$(find velma_common)/launch/octomap_server.launch" />
+
+	<!-- trajectory planner -->
+	<include file="$(find velma_ros_plugin)/launch/velma_planner.launch" />
+
+
+	<!-- mobile part of the system -->
+	<!-- -->
+	<!-- static map to odom tf publisher
+	<node name="map_odom_tf_publisher" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 map odom 10" /> -->
+
+	<!-- static world to torso tf publisher-->
+	<node name="world_torso_tf_publisher" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 world torso_base 100" />
+
+	<!-- laser scan merger -->
+	<include file="$(find velmobil_navigation)/launch/laserscan_multi_merge.launch"/>
+
+	<arg name="nodelet_manager_name" value="nodelet_manager"/>
+	<arg name="publish_nav_vel_topic" value="/mux_vel_nav/cmd_vel"/>
+ 	
+	<node pkg="nodelet" type="nodelet" name="$(arg nodelet_manager_name)" args="manager" />
+	 <node pkg="nodelet" type="nodelet" name="yocs_cmd_vel_mux" args="load yocs_cmd_vel_mux/CmdVelMuxNodelet $(arg nodelet_manager_name)" output="screen">
+    	<param name="yaml_cfg_file" value="$(find stero_mobile_init)/param/cmd_mux_config.yaml"/>
+		<!--<remap from="/yocs_cmd_vel_mux/mux_vel_keyboard/cmd_vel" to="/mux_vel_keyboard/cmd_vel"/>
+		<remap from="/yocs_cmd_vel_mux/mux_vel_nav/cmd_vel" to="$(arg publish_nav_vel_topic)"/>
+		<remap from="/yocs_cmd_vel_mux/mux_vel_raw/cmd_vel" to="/mux_vel_raw/cmd_vel"/>
+		<remap from="/cmd_vel_absolute" to="/cmd_vel"/>-->
+	</node>
+
+	<!-- misc -->
+
+	<!-- position of important objects in gazebo -->
+	<!-- <node name="object_markers" pkg="velmobil_navigation" type="object_marker" output="screen" /> -->
+</launch>

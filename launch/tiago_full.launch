@@ -1,0 +1,5 @@
+<launch>
+
+	<include file="$(find tiago_sim_integration)/launch/tiago_navigation_public_012.launch"/>
+
+</launch>
