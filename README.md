@@ -1,4 +1,4 @@
-Repozytorium zawiera podsumowanie z cześci mobilnej przedmiotu STERO. <br>
+Repozytorium zawiera podsumowanie z cześci mobilnej przedmiotu Sterowanie i Symulacja Robotów  <br>
 Częśc laboratoryjna składa się z:  <br>
     - Uruchomienie środowiska symulacji robota mobilnego, podstawy nawigacji  <br>
     - Budowa i wykorzystanie własnych środowisk symulacji robota mobilnego  <br>
