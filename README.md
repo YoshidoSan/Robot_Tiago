@@ -1,4 +1,4 @@
-Projekt wykonywany w pełni w sali laboratoryjnej, więc kod robiony pod presją czasową :c <br>
+Projekt wykonywany w pełni w sali laboratoryjnej <br>
 Repozytorium zawiera podsumowanie z cześci mobilnej przedmiotu Sterowanie i Symulacja Robotów  <br>
 Częśc laboratoryjna składa się z:  <br>
     - Uruchomienie środowiska symulacji robota mobilnego, podstawy nawigacji  <br>
