@@ -7,4 +7,4 @@ Częśc laboratoryjna składa się z:  <br>
 Część projektowa zawiera:  <br>
     - Sterowanie robotem mobilnym, badanie jakość odometrii robota mobilnego  <br>
     - Integracja popularnych algorytmów wykorzystywanych w nawigacji robota mobilnego. Program ten realizuje system nawigacji robota poruszającego się w dynamicznym środowisku <br>
-Sprawozadanie częsci mobilnej w pliku: sprawozdanie_STERO.pdf  <br>
+Sprawozadanie częsci mobilnej w pliku: STERO.pdf  <br>
